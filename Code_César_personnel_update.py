@@ -12,12 +12,24 @@ class CodeCesar:
         return nouvelle_lettre
 
     def cryptage(self, texte):
-        texte = texte.upper() # Permet de changer les minuscules en capitales
-        texte_crypte = "" 
-        for lettre in texte:
-            if lettre.isalpha(): 
-                lettre_cryptagee = self.decale(lettre)
-                texte_crypte += lettre_cryptagee
-            else:
-                texte_crypte += lettre
+        texte_crypte = ""
+        
+        if texte.islower():
+            texte = texte.upper()
+
+            for lettre in texte:
+                if lettre.isalpha():
+                    lettre_cryptagee = self.decale(lettre)
+                    texte_crypte += lettre_cryptagee
+                else:
+                    texte_crypte += lettre
+            texte_crypte = texte_crypte.lower()
+
+        else:
+            for lettre in texte:
+                if lettre.isalpha():
+                    lettre_cryptagee = self.decale(lettre)
+                    texte_crypte += lettre_cryptagee
+                else:
+                    texte_crypte += lettre
         return texte_crypte
